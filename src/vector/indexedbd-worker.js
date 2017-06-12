@@ -19,3 +19,46 @@ import {IndexedDBStoreWorker} from 'matrix-js-sdk/lib/indexeddb-worker.js';
 const remoteWorker = new IndexedDBStoreWorker(postMessage);
 
 onmessage = remoteWorker.onMessage;
+
+
+
+
+
+//Option to add save self signed certificate
+app.on('select-client-certificate', (event, webContents, url, list, callback) => {
+
+  console.log('select-client-certificate', url, list)
+
+  event.preventDefault()
+
+
+
+  ipc.once(çlient-certificate-selected', (event, item) => {
+
+    console.log('selected:', item)
+
+    callback(item)
+
+  })
+
+
+
+  mainWindow.webContents.send('select-client-certificate', list)
+
+})
+
+
+
+app.on(çertificate-error', (event, webContents, url, error, certificate, callback) => {
+
+  console.log(çertificate-error', url)
+
+  event.preventDefault()
+
+  const result = ... // do your validation here
+
+  callback(result)
+
+})
+
+
